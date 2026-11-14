@@ -1,0 +1,14 @@
+services:
+  server:
+    build: ./app/server
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  web:
+    build: ./app/web
+    ports:
+      - "3000:80"
+    depends_on:
+      - server
+    restart: unless-stopped
