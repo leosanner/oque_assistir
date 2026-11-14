@@ -6,7 +6,7 @@ services:
       POSTGRES_USER: oque_assistir
       POSTGRES_PASSWORD: oque_assistir
     ports:
-      - "5432:5432"
+      - "${POSTGRES_PORT:-5432}:5432"
     volumes:
       - postgres-data:/var/lib/postgresql/data
     healthcheck:
@@ -30,7 +30,7 @@ services:
         ollama pull "$$OLLAMA_CHAT_MODEL"
         wait $$pid
     ports:
-      - "11434:11434"
+      - "${OLLAMA_PORT:-11434}:11434"
     volumes:
       - ollama-data:/root/.ollama
     # Healthy only once the model is available, so dependants never hit a missing model
