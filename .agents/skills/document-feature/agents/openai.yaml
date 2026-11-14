@@ -1,0 +1,3 @@
+interface:
+  display_name: "Document Feature"
+  short_description: "Document a feature after implementation"
