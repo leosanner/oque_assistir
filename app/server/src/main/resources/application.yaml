@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: server
+  # Docker Compose (dev only, spring-boot:run): start only the backing services from the root compose file
+  docker:
+    compose:
+      file: ../../docker-compose.yml
+      start:
+        arguments: postgres,ollama
+      stop:
+        arguments: postgres,ollama
+
+# App settings read from the environment (bound to records in kernel.environment, exposed by AiModelEnvironment)
+app:
+  ollama:
+    base-url: ${OLLAMA_BASE_URL:http://localhost:11434}
+    chat-model: ${OLLAMA_CHAT_MODEL:llama3.2:3b}
+
+# LangChain4j / Ollama
+langchain4j:
+  ollama:
+    chat-model:
+      base-url: ${app.ollama.base-url}
+      model-name: ${app.ollama.chat-model}
+    streaming-chat-model:
+      base-url: ${app.ollama.base-url}
+      model-name: ${app.ollama.chat-model}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
