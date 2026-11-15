@@ -12,6 +12,7 @@ This repository contains no product code. It defines the **standard AI-assisted 
 - `docs/dev/workflow.md`: the development workflow, step by step.
 - `docs/agents/`: configuration the skills read (issue tracker, domain docs).
 - `docs/adr/`: decisions about the workflow itself, numbered (`0001-title.md`).
+- `docs/design/guidelines.md`: visual design rules for the web UI (tokens, typography, components). Read it before building or changing any screen in `app/web`.
 
 ## Conventions
 
